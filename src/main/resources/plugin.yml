@@ -1,0 +1,6 @@
+name: BurnitoPlugin
+version: '${project.version}'
+main: probandoando.core.Main
+api-version: 1.16
+authors: [ ChBrus ]
+description: Este será el primer plugin para probar como hacerlos
