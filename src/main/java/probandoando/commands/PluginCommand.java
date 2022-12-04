@@ -9,10 +9,10 @@ import probandoando.core.Main;
 
 public class PluginCommand implements CommandExecutor {
 
-    private final String version;
+    private final Main miplugin;
 
-    public PluginCommand(String version) {
-        this.version = version;
+    public PluginCommand(Main miplugin) {
+        this.miplugin = miplugin;
     }
 
     @Override
@@ -22,7 +22,7 @@ public class PluginCommand implements CommandExecutor {
             if (args.length == 1) {
                 switch (args[0]) {
                     case "version":
-                        Main.sendMessage(player, "El plugin se encuentra en su versión " + ChatColor.GOLD + version, ChatColor.DARK_GREEN, ChatColor.RED);
+                        Main.sendMessage(player, "El plugin se encuentra en su versión " + ChatColor.GOLD + miplugin.getDescription().getVersion(), ChatColor.DARK_GREEN, ChatColor.RED);
                         break;
                     case "tp":
                         if (!player.hasPermission("burnito-plugin.tp")) {
@@ -37,15 +37,19 @@ public class PluginCommand implements CommandExecutor {
                         player.setFoodLevel(20);
                         Main.sendMessage(player, "Has sido curado al máximo", ChatColor.DARK_GREEN, ChatColor.RED);
                     break;
+                    case "reload":
+                        miplugin.reloadConfig();
+                        Main.sendMessage(player, "El plugin ha sido recargado correctamente", ChatColor.DARK_GREEN, ChatColor.RED);
+                    break;
                     default:
-                        Main.sendMessage(player, "Invalid command!", ChatColor.DARK_RED, ChatColor.YELLOW);
+                        Main.sendMessage(player, "Invalid command", ChatColor.DARK_RED, ChatColor.YELLOW);
                 }
             } else {
-                player.sendMessage(ChatColor.GOLD + "------------------------------------------------");
-                player.sendMessage(ChatColor.DARK_AQUA + "Comandos: ");
-                player.sendMessage(ChatColor.DARK_GREEN + "    /burnitoPlugin version: versión del plugin");
-                player.sendMessage(ChatColor.DARK_GREEN + "    /burnitoPlugin tp: Teletransporta al spawn");
-                player.sendMessage(ChatColor.GOLD + "------------------------------------------------");
+                player.sendMessage(ChatColor.GOLD + "------------------------------------------------" + "\n" +
+                                   ChatColor.DARK_AQUA + "Comandos: " + "\n" +
+                                   ChatColor.DARK_GREEN + "    /burnitoPlugin version: versión del plugin" + "\n" +
+                                                          "    /burnitoPlugin tp: Teletransporta al spawn" + "\n" +
+                                   ChatColor.GOLD + "------------------------------------------------");
             }
         }
         return true;

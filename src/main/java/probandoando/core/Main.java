@@ -17,7 +17,7 @@ public final class Main extends JavaPlugin {
     public void onEnable() {
         // Commands of Plugin
         try {
-            getCommand("burnitoPlugin").setExecutor(new PluginCommand(this.getDescription().getVersion()));
+            getCommand("burnitoPlugin").setExecutor(new PluginCommand(this));
         } catch (NullPointerException ex) {
             ccs.sendMessage(ChatColor.GOLD + "[" + ChatColor.RED + "!" + ChatColor.GOLD + "]: No se han podido cargar los comandos del plugin: " + ChatColor.DARK_AQUA + getDescription().getName());
         }

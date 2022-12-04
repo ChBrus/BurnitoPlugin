@@ -26,7 +26,6 @@ public class PlayerJoinQuit implements Listener {
         if(player.hasPlayedBefore()) {
             event.setJoinMessage(ChatColor.DARK_GREEN + "Él jugador <" + name + ChatColor.DARK_GREEN + "> se ha unido");
         } else {
-            FileConfiguration config = miplugin.getConfig();
             event.setJoinMessage(ChatColor.DARK_GREEN + "Bienvenido <" + name + ChatColor.DARK_GREEN + "> a mi servidor :D");
         }
     }

@@ -4,3 +4,11 @@ main: probandoando.core.Main
 api-version: 1.16
 authors: [ ChBrus ]
 description: Este será el primer plugin para probar como hacerlos
+commands:
+  burnitoPlugin:
+    description: El comando principal de mi plugin
+    usage: /burnitoPlugin
+permission:
+  burnito-plugin.tp:
+    description: Te permite teletransportarte al spawn
+    default: false
