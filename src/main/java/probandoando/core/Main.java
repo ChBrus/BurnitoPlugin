@@ -3,6 +3,7 @@ package probandoando.core;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.ConsoleCommandSender;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import probandoando.commands.PluginCommand;
 import probandoando.events.GiveItems;
@@ -22,7 +23,7 @@ public final class Main extends JavaPlugin {
         }
 
         // Events
-        getServer().getPluginManager().registerEvents(new PlayerJoinQuit(), this);
+        getServer().getPluginManager().registerEvents(new PlayerJoinQuit(this), this);
         getServer().getPluginManager().registerEvents(new GiveItems(), this);
 
         // Recipe
@@ -36,5 +37,9 @@ public final class Main extends JavaPlugin {
     @Override
     public void onDisable() {
 
+    }
+
+    public static void sendMessage(Player player, Object msg, ChatColor textColor, ChatColor notification) {
+        player.sendMessage(textColor + "[" + notification + "!" + textColor + "]: " + msg);
     }
 }

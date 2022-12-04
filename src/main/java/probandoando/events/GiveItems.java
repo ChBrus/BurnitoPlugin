@@ -7,7 +7,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
-import probandoando.core.MessagesToPlayer;
+import probandoando.core.Main;
 
 public class GiveItems implements Listener {
     @EventHandler
@@ -26,6 +26,6 @@ public class GiveItems implements Listener {
         player.getInventory().addItem(food);        // Añade el stack de food/comida al inventario
         player.getInventory().addItem(sword);       // Añade la espada al inventario
         player.getInventory().setChestplate(chestplate);        // Equipa la pechera de cuero al jugador
-        MessagesToPlayer.sendMessage(player, "Has recibido el paquete de inicio", ChatColor.DARK_GREEN, ChatColor.RED);
+        Main.sendMessage(player, "Has recibido el paquete de inicio", ChatColor.DARK_GREEN, ChatColor.RED);
     }
 }

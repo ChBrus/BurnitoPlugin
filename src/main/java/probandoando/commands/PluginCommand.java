@@ -5,7 +5,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import probandoando.core.MessagesToPlayer;
+import probandoando.core.Main;
 
 public class PluginCommand implements CommandExecutor {
 
@@ -22,23 +22,23 @@ public class PluginCommand implements CommandExecutor {
             if (args.length == 1) {
                 switch (args[0]) {
                     case "version":
-                        MessagesToPlayer.sendMessage(player, "El plugin se encuentra en su versión " + ChatColor.GOLD + version, ChatColor.DARK_GREEN, ChatColor.RED);
+                        Main.sendMessage(player, "El plugin se encuentra en su versión " + ChatColor.GOLD + version, ChatColor.DARK_GREEN, ChatColor.RED);
                         break;
                     case "tp":
                         if (!player.hasPermission("burnito-plugin.tp")) {
-                            MessagesToPlayer.sendMessage(player, "Usted no tiene permisos para teletransportarse", ChatColor.DARK_RED, ChatColor.YELLOW);
+                            Main.sendMessage(player, "Usted no tiene permisos para teletransportarse", ChatColor.DARK_RED, ChatColor.YELLOW);
                             return false;
                         }
                         player.teleport(player.getWorld().getSpawnLocation());
-                        MessagesToPlayer.sendMessage(player, "Has sido teletransportado al spawn", ChatColor.DARK_GREEN, ChatColor.RED);
+                        Main.sendMessage(player, "Has sido teletransportado al spawn", ChatColor.DARK_GREEN, ChatColor.RED);
                     break;
                     case "curar":
                         player.setHealth(player.getHealthScale());
                         player.setFoodLevel(20);
-                        MessagesToPlayer.sendMessage(player, "Has sido curado al máximo", ChatColor.DARK_GREEN, ChatColor.RED);
+                        Main.sendMessage(player, "Has sido curado al máximo", ChatColor.DARK_GREEN, ChatColor.RED);
                     break;
                     default:
-                        MessagesToPlayer.sendMessage(player, "Invalid command!", ChatColor.DARK_RED, ChatColor.YELLOW);
+                        Main.sendMessage(player, "Invalid command!", ChatColor.DARK_RED, ChatColor.YELLOW);
                 }
             } else {
                 player.sendMessage(ChatColor.GOLD + "------------------------------------------------");
